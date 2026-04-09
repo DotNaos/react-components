@@ -1,0 +1,276 @@
+.pdf-viewer {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    /* Plain white background - grid is rendered in world-space */
+    background-color: #fafafa;
+    overflow: hidden;
+}
+
+.pdf-viewer.light {
+    background-color: #fafafa;
+}
+
+/* PDF Toolbar */
+.pdf-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    background: #1e1e1e;
+    border-bottom: 1px solid #333;
+    z-index: 50;
+}
+
+.pdf-viewer.light .pdf-toolbar {
+    background: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.pdf-nav {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pdf-nav-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    border: none;
+    background: #2d2d2d;
+    color: #9ca3af;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.2s,
+        color 0.2s;
+}
+
+.pdf-nav-btn:hover:not(:disabled) {
+    background-color: #404040;
+    color: #e5e7eb;
+}
+
+.pdf-nav-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pdf-viewer.light .pdf-nav-btn {
+    background: #f3f4f6;
+    color: #6b7280;
+}
+
+.pdf-viewer.light .pdf-nav-btn:hover:not(:disabled) {
+    background-color: #e5e7eb;
+    color: #374151;
+}
+
+.pdf-page-info {
+    color: #9ca3af;
+    font-size: 14px;
+    font-family: monospace;
+    min-width: 60px;
+    text-align: center;
+}
+
+.pdf-viewer.light .pdf-page-info {
+    color: #6b7280;
+}
+
+/* PDF Content */
+.pdf-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto;
+    overflow: auto;
+    position: relative;
+}
+
+.pdf-loading,
+.pdf-error {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #9ca3af;
+    font-size: 16px;
+}
+
+.pdf-error {
+    color: #ef4444;
+}
+
+.pdf-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #404040;
+    border-radius: 8px;
+    position: relative;
+}
+
+.pdf-viewer.light .pdf-placeholder {
+    border-color: #d1d5db;
+}
+
+.pdf-placeholder-text {
+    color: #6b7280;
+    font-size: 14px;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* Annotation Layer */
+.pdf-annotation-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: auto;
+}
+
+/* React-PDF specific styles */
+.react-pdf__Document {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.react-pdf__Page {
+    position: relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+
+.pdf-viewer.light .react-pdf__Page {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.react-pdf__Page__canvas {
+    display: block;
+}
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .pdf-toolbar {
+        padding: 6px 12px;
+    }
+
+    .pdf-content {
+        padding: 10px;
+    }
+
+    .pdf-nav-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 14px;
+    }
+
+    .pdf-page-info {
+        font-size: 12px;
+    }
+}
+
+/* Text Layer - invisible text overlay for selection */
+.textLayer {
+    position: absolute;
+    text-align: initial;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: 1;
+    line-height: 1.0;
+    /* Disabled by default - enabled when .active */
+    pointer-events: none;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+    z-index: 2;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    cursor: default;
+}
+
+/* Enable text selection only when active (cursor tool) */
+.textLayer.active {
+    pointer-events: auto;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    cursor: text;
+}
+
+.textLayer span {
+    color: transparent;
+    position: absolute;
+    white-space: pre;
+    cursor: inherit;
+    transform-origin: 0% 0%;
+    pointer-events: inherit;
+    -webkit-user-select: inherit;
+    -moz-user-select: inherit;
+    -ms-user-select: inherit;
+    user-select: inherit;
+    /* Prevent span background from showing through */
+    background: none !important;
+}
+
+/* Hide br elements that cause double selection */
+.textLayer br {
+    display: none !important;
+    user-select: none !important;
+}
+
+.textLayer span::selection {
+    background: rgba(0, 100, 255, 0.3);
+}
+
+.textLayer span::-moz-selection {
+    background: rgba(0, 100, 255, 0.3);
+}
+
+/* Hide pdfjs end-of-content markers */
+.textLayer .endOfContent {
+    display: none !important;
+}
+
+/* markedContent divs - make them transparent containers */
+.textLayer [class*="markedContent"] {
+    background: none !important;
+    display: contents;
+}
+
+/* Prevent any div children from having selection */
+.textLayer div:not(.textLayer)::selection {
+    background: transparent !important;
+}
+
+/* Only allow selection on direct spans */
+.textLayer > span::selection,
+.textLayer [class*="markedContent"] > span::selection {
+    background: rgba(0, 100, 255, 0.3);
+}
+
+/* Make sure highlight is visible */
+.textLayer .highlight {
+    margin: -1px;
+    padding: 1px;
+    background-color: rgba(180, 0, 170, 0.2);
+    border-radius: 4px;
+}
+
+.textLayer .highlight.selected {
+    background-color: rgba(0, 100, 0, 0.2);
+}

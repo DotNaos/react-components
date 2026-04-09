@@ -1,0 +1,153 @@
+{
+  "name": "@dotnaos/react-components",
+  "version": "0.0.1",
+  "description": "Shared React view components for DotNaos projects.",
+  "private": false,
+  "type": "module",
+  "packageManager": "pnpm@10.11.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DotNaos/react-components.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "README.pure.md",
+    "README.impure.md"
+  ],
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "scripts": {
+    "build": "pnpm run clean && tsc -p tsconfig.build.json && pnpm run copy:css",
+    "clean": "rm -rf dist",
+    "copy:css": "copyfiles -u 0 \"canvas/src/**/*.css\" \"markdown-editor/src/**/*.css\" \"pdf-viewer/src/**/*.css\" dist",
+    "typecheck": "tsc --noEmit",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./view": {
+      "types": "./dist/view.d.ts",
+      "import": "./dist/view.js",
+      "default": "./dist/view.js"
+    },
+    "./calendar": {
+      "types": "./dist/calendar/src/index.d.ts",
+      "import": "./dist/calendar/src/index.js",
+      "default": "./dist/calendar/src/index.js"
+    },
+    "./canvas": {
+      "types": "./dist/canvas/src/index.d.ts",
+      "import": "./dist/canvas/src/index.js",
+      "default": "./dist/canvas/src/index.js"
+    },
+    "./canvas/store": {
+      "types": "./dist/canvas/src/store/index.d.ts",
+      "import": "./dist/canvas/src/store/index.js",
+      "default": "./dist/canvas/src/store/index.js"
+    },
+    "./canvas/persistence": {
+      "types": "./dist/canvas/src/persistence/index.d.ts",
+      "import": "./dist/canvas/src/persistence/index.js",
+      "default": "./dist/canvas/src/persistence/index.js"
+    },
+    "./code-editor": {
+      "types": "./dist/code-editor/src/index.d.ts",
+      "import": "./dist/code-editor/src/index.js",
+      "default": "./dist/code-editor/src/index.js"
+    },
+    "./git-client": {
+      "types": "./dist/git-client/index.d.ts",
+      "import": "./dist/git-client/index.js",
+      "default": "./dist/git-client/index.js"
+    },
+    "./git-client/git-backup": {
+      "types": "./dist/git-client/git-backup/index.d.ts",
+      "import": "./dist/git-client/git-backup/index.js",
+      "default": "./dist/git-client/git-backup/index.js"
+    },
+    "./markdown-editor": {
+      "types": "./dist/markdown-editor/src/index.d.ts",
+      "import": "./dist/markdown-editor/src/index.js",
+      "default": "./dist/markdown-editor/src/index.js"
+    },
+    "./node-tree": {
+      "types": "./dist/node-tree/src/index.d.ts",
+      "import": "./dist/node-tree/src/index.js",
+      "default": "./dist/node-tree/src/index.js"
+    },
+    "./pdf-viewer": {
+      "types": "./dist/pdf-viewer/src/index.d.ts",
+      "import": "./dist/pdf-viewer/src/index.js",
+      "default": "./dist/pdf-viewer/src/index.js"
+    },
+    "./settings": {
+      "types": "./dist/settings/index.d.ts",
+      "import": "./dist/settings/index.js",
+      "default": "./dist/settings/index.js"
+    },
+    "./workspace-picker": {
+      "types": "./dist/workspace-picker/src/index.d.ts",
+      "import": "./dist/workspace-picker/src/index.js",
+      "default": "./dist/workspace-picker/src/index.js"
+    }
+  },
+  "dependencies": {
+    "@fontsource/jetbrains-mono": "^5.2.1",
+    "@monaco-editor/react": "^4.7.0",
+    "@tiptap/core": "^3.11.1",
+    "@tiptap/extension-bubble-menu": "^3.11.1",
+    "@tiptap/extension-placeholder": "^3.11.1",
+    "@tiptap/extension-table": "^3.11.1",
+    "@tiptap/extension-table-cell": "^3.11.1",
+    "@tiptap/extension-table-header": "^3.11.1",
+    "@tiptap/extension-table-row": "^3.11.1",
+    "@tiptap/extension-task-item": "^3.11.1",
+    "@tiptap/extension-task-list": "^3.11.1",
+    "@tiptap/markdown": "^3.11.1",
+    "@tiptap/pm": "^3.11.1",
+    "@tiptap/react": "^3.11.1",
+    "@tiptap/starter-kit": "^3.11.1",
+    "@tiptap/suggestion": "^3.11.1",
+    "isomorphic-git": "^1.35.1",
+    "katex": "^0.16.25",
+    "lucide-react": "^0.562.0",
+    "monaco-editor": "^0.55.1",
+    "pdfjs-dist": "^4.0.0",
+    "prismjs": "^1.30.0",
+    "tesseract.js": "^5.0.0",
+    "zod": "^3.23.0",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@storybook/addon-a11y": "^10.3.5",
+    "@storybook/addon-docs": "^10.3.5",
+    "@storybook/react-vite": "^10.3.5",
+    "@tailwindcss/vite": "^4.1.14",
+    "@types/node": "^24.5.2",
+    "@types/prismjs": "^1.26.5",
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "copyfiles": "^2.4.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "storybook": "^10.3.5",
+    "tailwindcss": "^4.1.14",
+    "typescript": "^5.9.2",
+    "vite": "^7.1.10"
+  },
+  "peerDependencies": {
+    "@dotnaos/react-ui": "^0.0.1",
+    "react": "^18.0.0 || ^19.0.0",
+    "react-dom": "^18.0.0 || ^19.0.0"
+  }
+}

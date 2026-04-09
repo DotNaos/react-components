@@ -1,0 +1,24 @@
+{
+    "name": "@aryazos/node-tree",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./src/index.ts",
+            "default": "./src/index.ts"
+        },
+        "./tailwind.config": {
+            "types": "./tailwind.config.ts",
+            "default": "./tailwind.config.ts"
+        }
+    },
+    "dependencies": {
+        "@aryazos/ui": "workspace:*",
+        "lucide-react": "^0.562.0"
+    },
+    "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+    }
+}

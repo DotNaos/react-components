@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "@dotnaos/react-ui/tokens.css";
+@import "@dotnaos/react-ui/tailwind-theme.css";
+@import "katex/dist/katex.min.css";
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#storybook-root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(72, 187, 120, 0.18), transparent 30%),
+    radial-gradient(circle at right, rgba(56, 189, 248, 0.16), transparent 28%),
+    linear-gradient(180deg, #07111d 0%, #0b1220 45%, #050915 100%);
+  color: white;
+}
+
+* {
+  box-sizing: border-box;
+}

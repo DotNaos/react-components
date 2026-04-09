@@ -1,0 +1,28 @@
+{
+    "name": "@aryazos/git-client",
+    "version": "0.0.1",
+    "private": true,
+    "type": "module",
+    "exports": {
+        ".": {
+            "types": "./index.ts",
+            "default": "./index.ts"
+        }
+    },
+    "dependencies": {
+        "@aryazos/ts-base": "workspace:*",
+        "@aryazos/ui": "workspace:*",
+        "lucide-react": "^0.562.0",
+        "zod": "^3.23.0"
+    },
+    "peerDependencies": {
+        "react": "^18.0.0 || ^19.0.0",
+        "react-dom": "^18.0.0 || ^19.0.0"
+    },
+    "devDependencies": {
+        "@aryazos/typescript-config": "workspace:*",
+        "@types/react": "^19.1.13",
+        "@types/react-dom": "^19.1.9",
+        "typescript": "^5.9.2"
+    }
+}
