@@ -26,8 +26,9 @@
     "clean": "rm -rf dist",
     "copy:css": "copyfiles -u 0 \"canvas/src/**/*.css\" \"markdown-editor/src/**/*.css\" \"pdf-viewer/src/**/*.css\" dist",
     "typecheck": "tsc --noEmit",
-    "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "storybook": "REACT_UI_PATH=../react-ui storybook dev -p 6006",
+    "build-storybook": "REACT_UI_PATH=../react-ui storybook build",
+    "build-storybook:ci": "storybook build"
   },
   "exports": {
     ".": {

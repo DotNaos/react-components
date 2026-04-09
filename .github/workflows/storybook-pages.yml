@@ -43,10 +43,20 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Install react-ui dependency
+        working-directory: react-ui-dependency
+        run: pnpm install --frozen-lockfile
+
+      - name: Build react-ui dependency
+        working-directory: react-ui-dependency
+        run: pnpm build
+
+      - name: Link react-ui dependency
+        run: pnpm link ./react-ui-dependency
+
       - name: Build Storybook
-        run: pnpm build-storybook
+        run: pnpm build-storybook:ci
         env:
-          REACT_UI_PATH: ./react-ui-dependency
           STORYBOOK_BASE_PATH: /react-components/
 
       - name: Configure GitHub Pages
