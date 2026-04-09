@@ -11,31 +11,7 @@ import type {
 import type { NodeTreeInput, SelectionState, TreeNode } from "../node-tree/src/types";
 import type { Settings, SettingsKey } from "../settings";
 
-export function StorySection({
-  title,
-  description,
-  children,
-}: {
-  title: string;
-  description?: string;
-  children: ReactNode;
-}) {
-  return (
-    <section className="rounded-[32px] border border-white/10 bg-black/25 px-6 py-6 shadow-[0_28px_100px_rgba(0,0,0,0.3)] backdrop-blur-xl">
-      <div className="mb-5 flex flex-col gap-2">
-        <h2 className="text-2xl font-semibold tracking-tight text-white">
-          {title}
-        </h2>
-        {description ? (
-          <p className="max-w-3xl text-sm text-zinc-400">{description}</p>
-        ) : null}
-      </div>
-      {children}
-    </section>
-  );
-}
-
-export function StoryGrid({
+export function StoryFrame({
   children,
   className = "",
 }: {
@@ -43,35 +19,27 @@ export function StoryGrid({
   className?: string;
 }) {
   return (
-    <div className={`grid gap-5 xl:grid-cols-3 ${className}`.trim()}>
+    <div className={`flex min-h-screen items-center justify-center p-8 ${className}`.trim()}>
       {children}
     </div>
   );
 }
 
-export function StoryCard({
-  title,
-  description,
+export function StorySurface({
   children,
   className = "",
+  widthClassName = "max-w-3xl",
 }: {
-  title: string;
-  description?: string;
   children: ReactNode;
   className?: string;
+  widthClassName?: string;
 }) {
   return (
-    <article
-      className={`rounded-[24px] border border-white/10 bg-slate-950/75 p-5 shadow-[0_20px_60px_rgba(0,0,0,0.25)] ${className}`.trim()}
+    <div
+      className={`w-full ${widthClassName} rounded-3xl border border-white/10 bg-slate-950/75 p-6 shadow-[0_18px_48px_rgba(0,0,0,0.24)] ${className}`.trim()}
     >
-      <div className="mb-4">
-        <h3 className="text-lg font-medium text-white">{title}</h3>
-        {description ? (
-          <p className="mt-1 text-sm text-zinc-400">{description}</p>
-        ) : null}
-      </div>
       {children}
-    </article>
+    </div>
   );
 }
 
