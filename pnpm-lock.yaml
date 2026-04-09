@@ -20,6 +20,9 @@ importers:
       '@tiptap/extension-bubble-menu':
         specifier: ^3.11.1
         version: 3.22.3(@tiptap/core@3.22.3(@tiptap/pm@3.22.3))(@tiptap/pm@3.22.3)
+      '@tiptap/extension-paragraph':
+        specifier: ^3.11.1
+        version: 3.22.3(@tiptap/core@3.22.3(@tiptap/pm@3.22.3))
       '@tiptap/extension-placeholder':
         specifier: ^3.11.1
         version: 3.22.3(@tiptap/extensions@3.22.3(@tiptap/core@3.22.3(@tiptap/pm@3.22.3))(@tiptap/pm@3.22.3))

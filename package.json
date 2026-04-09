@@ -106,6 +106,7 @@
     "@monaco-editor/react": "^4.7.0",
     "@tiptap/core": "^3.11.1",
     "@tiptap/extension-bubble-menu": "^3.11.1",
+    "@tiptap/extension-paragraph": "^3.11.1",
     "@tiptap/extension-placeholder": "^3.11.1",
     "@tiptap/extension-table": "^3.11.1",
     "@tiptap/extension-table-cell": "^3.11.1",
